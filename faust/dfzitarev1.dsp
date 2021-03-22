@@ -1,10 +1,10 @@
 declare name "DFZitaRev1";
 declare description "A feedback-delay-network reverb";
-declare author "Christopher Arndt";
-declare license "MIT license";
+declare author "Julius O. Smith III, Christopher Arndt";
+declare copyright "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>";
+declare license "STK-4.3 license";
+declare version "0.1.0";
 
 import("stdfaust.lib");
 
-gain = hslider("[0]Gain [symbol: gain][abbrev: gain][unit: dB]", -6.0, -90.0, 30.0, 0.1):si.smoo;
-
-process = _ * ba.db2linear(gain);
+process = _,_ : dm.zita_rev1 : _,_;
