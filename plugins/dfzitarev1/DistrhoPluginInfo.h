@@ -43,6 +43,6 @@
 #define DISTRHO_PLUGIN_WANT_MIDI_OUTPUT 0
 
 // See http://lv2plug.in/ns/lv2core#ref-classes
-// #define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:AmplifierPlugin"
+#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
 
 #endif // DISTRHO_PLUGIN_INFO_H
