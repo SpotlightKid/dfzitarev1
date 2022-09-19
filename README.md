@@ -1,6 +1,6 @@
 # DF Zita Rev1
 
-A feedback-delay-network reverb build with [DPF] and based on a [FAUST]
+A feedback-delay-network reverb built with [DPF] and based on a [FAUST]
 library demo.
 
 ## Formats
