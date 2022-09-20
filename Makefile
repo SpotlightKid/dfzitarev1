@@ -4,23 +4,37 @@
 # Created by falkTX, Christopher Arndt, and Patrick Desaulniers
 #
 
-include dpf/Makefile.base.mk
+SHELL=/bin/bash
+
+-include dpf/Makefile.base.mk
 
 all: libs plugins gen
 
 # --------------------------------------------------------------
 
+PLUGINS = dfzitarev1
+
+DPF_PATCHES = \
+	dpf/fix-lv2-version-export.patch \
+	dpf/no-port-name-lv2-prefix.patch
+
+PLUGIN_BASE_URI = https://chrisarndt.de/plugins/
+
 submodules:
-	-test -d .gitmodules && git submodule update --init --recursive
+	-test -d .git && git submodule update --init --recursive
 
-libs: patch
+libs: submodules patch
 
-patch:
-	-patch -d dpf -r - -p1 -N -i ../patches/dpf/no-port-name-lv2-prefix.patch
-	-patch -d dpf -r - -p1 -N -i ../patches/dpf/fix-lv2-version-export.patch
+patch: submodules
+	@-for p in $(DPF_PATCHES); do \
+		echo "Applying patch '$${p}'..."; \
+		patch -d dpf -r - -p1 -N -V none -i ../patches/$${p}; \
+	done
 
-plugins: libs
-	$(MAKE) all -C plugins/dfzitarev1
+plugins: $(PLUGINS)
+
+$(PLUGINS):
+	$(MAKE) all -C plugins/$@
 
 ifneq ($(CROSS_COMPILING),true)
 gen: plugins dpf/utils/lv2_ttl_generator
@@ -42,21 +56,30 @@ endif
 # --------------------------------------------------------------
 
 lv2lint:
-	$(MAKE) lv2lint -C plugins/dfzitarev1
+	@for plug in $(PLUGINS); do \
+		lv2lint -Mpack -q -s lv2_generate_ttl -t "Plugin Author Email" \
+			-I bin/$${plug,,}.lv2/ "$(PLUGIN_BASE_URI)$${plug,,}"; \
+	done
 
 # --------------------------------------------------------------
 
 clean:
 	$(MAKE) clean -C dpf/utils/lv2-ttl-generator
-	$(MAKE) clean -C plugins/dfzitarev1
+	@for plug in $(PLUGINS); do \
+		$(MAKE) clean -C plugins/$${plug}; \
+	done
 	rm -rf bin build
 
 install: all
-	$(MAKE) install -C plugins/dfzitarev1
+	@for plug in $(PLUGINS); do \
+		$(MAKE) install -C plugins/$${plug}; \
+	done
 
 install-user: all
-	$(MAKE) install-user -C plugins/dfzitarev1
+	@for plug in $(PLUGINS); do \
+		$(MAKE) install-user -C plugins/$${plug}; \
+	done
 
 # --------------------------------------------------------------
 
-.PHONY: all clean faust gen install install-user libs lv2lint patch plugins submodule
+.PHONY: all clean gen install install-user libs lv2lint patch plugins submodule
