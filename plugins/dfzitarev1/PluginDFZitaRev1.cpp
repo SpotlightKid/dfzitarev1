@@ -75,7 +75,7 @@ void PluginDFZitaRev1::initParameter(uint32_t index, Parameter& parameter) {
 }
 
 /**
-  Set the name of the program @a index.
+  Set the name of the program @ index.
   This function will be called once, shortly after the plugin is created.
 */
 void PluginDFZitaRev1::initProgramName(uint32_t index, String& programName) {
