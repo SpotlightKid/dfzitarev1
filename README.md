@@ -1,15 +1,15 @@
 # DF Zita Rev1
 
-A feedback-delay-network reverb built with [DPF] and based on a [FAUST]
+A feedback-delay-network reverb plugin built with [DPF] and based on a [FAUST]
 library demo.
 
 ## Formats
 
 This plugin comes in the following plug-in formats:
 
-* LADSPA
-* LV2
-* VST2
+* LADSPA (`dfzitarev1-ladspa.so`)
+* LV2 (`https://chrisarndt.de/plugins/dfzitarev1`)
+* VST2 (`dfzitarev1-vst.so`)
 
 The plugin depends on the host to provide a generic UI to control parameters.
 
@@ -93,14 +93,18 @@ This software was put together by *Christopher Arndt*.
 ## Acknowledgements
 
 The DSP code is generated from the FAUST sources via the [faustpp]
-pre-processor and uses the `dm.zita_rev1` demo from the FAUST library,
-which is in turn based on [zita-rev1] by Fons Adriaensen.
+pre-processor and uses the [dm.zita_rev1] demo from the FAUST library,
+written by Julius O. Smith III [^1], which is in turn based on [zita-rev1] by Fons 
+Adriaensen.
 
 The project is built using the DISTRHO Plugin Framework ([DPF]) and set up
 with the [cookiecutter-dpf-faust] project template.
 
 
+[^1]: https://ccrma.stanford.edu/~jos/book2000/Zita_Rev1.html
+
 [cookiecutter-dpf-faust]: https://github.com/SpotlightKid/cookiecutter-dpf-faust
+[dm.zita_rev1]: https://faustlibraries.grame.fr/libs/demos/#dmzita_rev1
 [DPF]: https://github.com/DISTRHO/DPF
 [FAUST]: https://faust.grame.fr/
 [faustpp]: https://github.com/jpcima/faustpp.git
