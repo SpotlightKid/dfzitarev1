@@ -129,14 +129,27 @@ struct Preset {
 };
 
 const Preset factoryPresets[] = {
+    //{
+    //    "Preset name",
+    //    {1.0, ...}      // array of DFZitaRev1::NumParameters float param values
+    //},
+    {"Warm Hall (Insert)", {35.0, 200.0, 2.2, 2.0, 4000.0, 500.0, -2.0, 2500.0, -2.0, 0.57, 2.0}},
     {
-        "Default",
-        {-6.0f,}
+        "Warm Hall (Send)",
+        {
+            35.0,       // In_Delay
+            200.0,      // LF_X
+            2.2,        // Low_RT60
+            2.0,        // Mid_RT60
+            4000.0,     // HF_Damping
+            500.0,      // Eq1_Freq
+            -2.0,       // Eq1_Level
+            2500.0,     // Eq2_Freq
+            -2.0,       // Eq2_Level
+            -1.0,       // Dry_Wet_Mix
+            0.0         // Level
+        }
     }
-    //,{
-    //    "Another preset",  // preset name
-    //    {-14.0f, ...}      // array of DFZitaRev1::NumParameters float param values
-    //}
 };
 
 const uint presetCount = sizeof(factoryPresets) / sizeof(Preset);
