@@ -7,10 +7,15 @@ library demo.
 
 ## Formats
 
-This plugin comes in the following plug-in formats:
+This plugin is available in the following plug-in formats by default:
+
+* LV2 (`https://chrisarndt.de/plugins/dfzitarev1`)
+* VST3 (`dfzitarev1.vst3`)
+
+The following formats are not built by default, but can be enabled when 
+compiling (see ["Compiling"](#compiling)):
 
 * LADSPA (`dfzitarev1-ladspa.so`)
-* LV2 (`https://chrisarndt.de/plugins/dfzitarev1`)
 * VST2 (`dfzitarev1-vst.so`)
 
 The plugin depends on the host to provide a generic UI to control parameters.
@@ -25,6 +30,15 @@ sub-modules) and simply run `make` in the project's root directory:
     $ git clone --recursive https://github.com/SpotlightKid/dfzitarev1.git
     $ cd dfzitarev1
     $ make
+
+To enable building additional plugin formats, which are not enabled by default
+(LADSPA, VST2), pass `BUILD_LADSPA=true` resp. `BUILD_VST2=true` to make. For 
+example:
+
+    make BUILD_VST2=true
+
+The same settings must be passed to `make install` to also install optional
+plugin formats.
 
 
 ## Installation
@@ -48,6 +62,7 @@ dedicated makefile variable.
 * LADSPA: `LADSPA_DIR` (`<prefix>/lib/ladspa`)
 * LV2: `LV2_DIR` (`<prefix>/lib/lv2`)
 * VST2: `VST_DIR` (`<prefix>/lib/vst`)
+* VST2: `VST_DIR` (`<prefix>/lib/vst3`)
 
 Example: `make DESTDIR=/tmp/build-root VST_DIR=/usr/lib/lxvst install`
 
@@ -60,6 +75,7 @@ a dedicated makefile variable.
 * LADSPA: `USER_LADSPA_DIR` (`$HOME/.ladspa`)
 * LV2: `USER_LV2_DIR` (`$HOME/.lv2`)
 * VST2: `USER_VST_DIR` (`$HOME/.vst`)
+* VST3: `USER_VST_DIR` (`$HOME/.vst3`)
 
 *Note: The given default values for all of the above listed environment
 variables differ depending on the target OS.*

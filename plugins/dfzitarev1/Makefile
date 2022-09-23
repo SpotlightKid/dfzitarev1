@@ -19,14 +19,17 @@ LADSPA_DIR ?= $(LIBDIR)/ladspa
 ifneq ($(MACOS_OR_WINDOWS),true)
 LV2_DIR ?= $(LIBDIR)/lv2
 VST_DIR ?= $(LIBDIR)/vst
+VST3_DIR ?= $(LIBDIR)/vs3
 endif
 ifeq ($(MACOS),true)
 LV2_DIR ?= /Library/Audio/Plug-Ins/LV2
 VST_DIR ?= /Library/Audio/Plug-Ins/VST
+VST3_DIR ?= /Library/Audio/Plug-ins/VST3
 endif
 ifeq ($(WINDOWS),true)
 LV2_DIR ?= $(COMMONPROGRAMFILES)/LV2
 VST_DIR ?= $(COMMONPROGRAMFILES)/VST2
+VST3_DIR ?= $(COMMONPROGRAMFILES)/VST3
 endif
 
 USER_DSSI_DIR ?= $(HOME)/.dssi
@@ -34,14 +37,17 @@ USER_LADSPA_DIR ?= $(HOME)/.ladspa
 ifneq ($(MACOS_OR_WINDOWS),true)
 USER_LV2_DIR ?= $(HOME)/.lv2
 USER_VST_DIR ?= $(HOME)/.vst
+USER_VST3_DIR ?= $(HOME)/.vst3
 endif
 ifeq ($(MACOS),true)
 USER_LV2_DIR ?= $(HOME)/Library/Audio/Plug-Ins/LV2
 USER_VST_DIR ?= $(HOME)/Library/Audio/Plug-Ins/VST
+USER_VST3_DIR ?= $(HOME)/Library/Audio/Plug-Ins/VST3
 endif
 ifeq ($(WINDOWS),true)
 USER_LV2_DIR ?= $(APPDATA)/LV2
 USER_VST_DIR ?= $(APPDATA)/VST
+USER_VST3_DIR ?= $(APPDATA)/VST3
 endif
 
 # --------------------------------------------------------------
@@ -58,10 +64,11 @@ FAUST_IDENTIFIER := $(shell grep 'declare name' $(FAUST_DSP_SOURCE) | cut -f 2 -
 # Plugin types to build
 
 BUILD_LV2 ?= true
-BUILD_VST2 ?= true
+BUILD_VST2 ?= false
+BUILD_VST3 ?= true
 BUILD_JACK ?= false
 BUILD_DSSI ?= false
-BUILD_LADSPA ?= true
+BUILD_LADSPA ?= false
 
 # --------------------------------------------------------------
 # Files to build
@@ -83,6 +90,10 @@ endif
 
 ifeq ($(BUILD_VST2),true)
 TARGETS += vst
+endif
+
+ifeq ($(BUILD_VST3),true)
+TARGETS += vst3
 endif
 
 ifeq ($(BUILD_JACK),true)
@@ -133,6 +144,10 @@ ifeq ($(BUILD_VST2),true)
 	@mkdir -p -m755 $(DESTDIR)$(VST_DIR) && \
 	  install -m755 $(TARGET_DIR)/$(NAME)-vst$(LIB_EXT) $(DESTDIR)$(VST_DIR)
 endif
+ifeq ($(BUILD_VST3),true)
+	@mkdir -p -m755 $(DESTDIR)$(VST3_DIR)/$(dir $(VST3_FILENAME)) && \
+	  install -m755 $(TARGET_DIR)/$(VST3_FILENAME) $(DESTDIR)$(VST3_DIR)/$(VST3_FILENAME)
+endif
 ifeq ($(BUILD_LV2),true)
 	@mkdir -p -m755 $(DESTDIR)$(LV2_DIR)/$(NAME).lv2 && \
 	  install -m755 $(TARGET_DIR)/$(NAME).lv2/*$(LIB_EXT) $(DESTDIR)$(LV2_DIR)/$(NAME).lv2 && \
@@ -163,6 +178,10 @@ endif
 ifeq ($(BUILD_VST2),true)
 	@mkdir -p -m755 $(USER_VST_DIR) && \
 	  install -m755 $(TARGET_DIR)/$(NAME)-vst$(LIB_EXT) $(USER_VST_DIR)
+endif
+ifeq ($(BUILD_VST3),true)
+	@mkdir -p -m755 $(USER_VST3_DIR)/$(dir $(VST3_FILENAME)) && \
+	  install -m755 $(TARGET_DIR)/$(VST3_FILENAME) $(USER_VST3_DIR)/$(VST3_FILENAME)
 endif
 ifeq ($(BUILD_LV2),true)
 	@mkdir -p -m755 $(USER_LV2_DIR)/$(NAME).lv2 && \
