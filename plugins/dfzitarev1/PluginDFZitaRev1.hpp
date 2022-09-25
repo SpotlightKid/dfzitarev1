@@ -133,9 +133,8 @@ const Preset factoryPresets[] = {
     //    "Preset name",
     //    {1.0, ...}      // array of DFZitaRev1::NumParameters float param values
     //},
-    {"Warm Hall (Insert)", {35.0, 200.0, 2.2, 2.0, 4000.0, 500.0, -2.0, 2500.0, -2.0, 0.57, 2.0}},
     {
-        "Warm Hall (Send)",
+        "Warm Hall (Insert)",
         {
             35.0,       // In_Delay
             200.0,      // LF_X
@@ -146,10 +145,15 @@ const Preset factoryPresets[] = {
             -2.0,       // Eq1_Level
             2500.0,     // Eq2_Freq
             -2.0,       // Eq2_Level
-            -1.0,       // Dry_Wet_Mix
-            0.0         // Level
+            0.5,        // Dry_Wet_Mix
+            2.0         // Level
         }
-    }
+    },
+    {"Warm Hall (Send)", {35.0, 200.0, 2.2, 2.0, 4000.0, 500.0, -2.0, 2500.0, -2.0, -1.0, 20.0}},
+    {"Dark Hall (Insert)", {50.0, 200.0, 2.0, 1.8, 5500.0, 120, -3.0, 4500.0, -3.0, 0.5, 2.0}},
+    {"Dark Hall (Send)", {50.0, 200.0, 2.0, 1.8, 5500.0, 120, -3.0, 4500.0, -3.0, -1.0, 20.0}},
+    {"Medium Church (Insert)", {85.0, 200.0, 2.8, 2.5, 10000.0, 200.0, 0.0, 4000.0, 0.0, 0.3, 2.0}},
+    {"Medium Church (Send)", {85.0, 200.0, 2.8, 2.5, 10000.0, 200.0, 0.0, 4000.0, 0.0, -1.0, 20.0}},
 };
 
 const uint presetCount = sizeof(factoryPresets) / sizeof(Preset);
