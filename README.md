@@ -12,7 +12,7 @@ This plugin is available in the following plug-in formats by default:
 * LV2 (`https://chrisarndt.de/plugins/dfzitarev1`)
 * VST3 (`dfzitarev1.vst3`)
 
-The following formats are not built by default, but can be enabled when 
+The following formats are not built by default, but can be enabled when
 compiling (see ["Compiling"](#compiling)):
 
 * LADSPA (`dfzitarev1-ladspa.so`)
@@ -32,7 +32,7 @@ sub-modules) and simply run `make` in the project's root directory:
     $ make
 
 To enable building additional plugin formats, which are not enabled by default
-(LADSPA, VST2), pass `BUILD_LADSPA=true` resp. `BUILD_VST2=true` to make. For 
+(LADSPA, VST2), pass `BUILD_LADSPA=true` resp. `BUILD_VST2=true` to make. For
 example:
 
     make BUILD_VST2=true
@@ -118,7 +118,7 @@ This plugin is released under the *MIT License*. Please see the
 
 The DSP code is generated from the FAUST sources via the [faustpp]
 pre-processor and uses the [dm.zita_rev1] demo from the FAUST library, written
-by Julius O. Smith III [^1], which is a re-implemntation of [zita-rev1] by Fons 
+by Julius O. Smith III [^1], which is a re-implementation of [zita-rev1] by Fons
 Adriaensen, writen in C++.
 
 The project is built using the DISTRHO Plugin Framework ([DPF]) and set up
