@@ -27,3 +27,4 @@ bin-w64/dfzitarev1.lv2
 bin-w64/dfzitarev1.vst3
 bin-w64/dfzitarev1-vst.*
 build/
+dist/
