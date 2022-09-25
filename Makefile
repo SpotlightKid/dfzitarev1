@@ -55,7 +55,7 @@ endif
 
 # --------------------------------------------------------------
 
-lv2lint:
+lv2lint: gen
 	@for plug in $(PLUGINS); do \
 		lv2lint -Mpack -q -s lv2_generate_ttl -t "Plugin Author Email" \
 			-I bin/$${plug,,}.lv2/ "$(PLUGIN_BASE_URI)$${plug,,}"; \
