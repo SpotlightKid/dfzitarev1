@@ -108,12 +108,18 @@ if the FAUST DSP source files in the `faust` directory are changed.
 This software was put together by *Christopher Arndt*.
 
 
+## License
+
+This plugin is released under the *MIT License*. Please see the
+[LICENSE.md](./LICENSE.md) file for details.
+
+
 ## Acknowledgements
 
 The DSP code is generated from the FAUST sources via the [faustpp]
-pre-processor and uses the [dm.zita_rev1] demo from the FAUST library,
-written by Julius O. Smith III [^1], which is in turn based on [zita-rev1] by Fons 
-Adriaensen.
+pre-processor and uses the [dm.zita_rev1] demo from the FAUST library, written
+by Julius O. Smith III [^1], which is a re-implemntation of [zita-rev1] by Fons 
+Adriaensen, writen in C++.
 
 The project is built using the DISTRHO Plugin Framework ([DPF]) and set up
 with the [cookiecutter-dpf-faust] project template.
