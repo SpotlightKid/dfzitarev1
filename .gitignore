@@ -13,9 +13,17 @@
 .DS_Store
 
 bin/dfzitarev1
-bin/dfzitarev1.exe
 bin/dfzitarev1-ladspa.*
 bin/dfzitarev1-dssi.*
 bin/dfzitarev1-vst.*
+bin/dfzitarev1.vst3
 bin/dfzitarev1.lv2/
+bin-w32/dfzitarev1.exe
+bin-w32/dfzitarev1.lv2
+bin-w32/dfzitarev1.vst3
+bin-w32/dfzitarev1-vst.*
+bin-w64/dfzitarev1.exe
+bin-w64/dfzitarev1.lv2
+bin-w64/dfzitarev1.vst3
+bin-w64/dfzitarev1-vst.*
 build/
