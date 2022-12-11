@@ -19,7 +19,7 @@ LADSPA_DIR ?= $(LIBDIR)/ladspa
 ifneq ($(MACOS_OR_WINDOWS),true)
 LV2_DIR ?= $(LIBDIR)/lv2
 VST_DIR ?= $(LIBDIR)/vst
-VST3_DIR ?= $(LIBDIR)/vs3
+VST3_DIR ?= $(LIBDIR)/vst3
 endif
 ifeq ($(MACOS),true)
 LV2_DIR ?= /Library/Audio/Plug-Ins/LV2
