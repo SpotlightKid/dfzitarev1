@@ -96,7 +96,7 @@ libs: submodules patch
 patch: submodules
 	@-for p in $(DPF_PATCHES); do \
 		echo "Applying patch '$${p}'..."; \
-		patch -d dpf -r - -p1 -N -V none -i ../patches/$${p}; \
+		patch -d dpf -r - -p1 -N --no-backup-if-mismatch -i ../patches/$${p}; \
 	done
 
 plugins: $(PLUGINS)
