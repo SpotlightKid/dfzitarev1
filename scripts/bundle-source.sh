@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Buill source distribution archive with all git sub-modules included
+# Build source distribution archive with all git sub-modules included
 #
 
 PROJECT_VERSION="$(git describe --abbrev=0 2>/dev/null)"
