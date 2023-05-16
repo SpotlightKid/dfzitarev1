@@ -1,6 +1,11 @@
 # Changelog
 
 
+# 0.2.0 (2023-05-16)
+
+* feat: added CLAP format plugin
+
+
 # 0.1.1 (2022-12-11)
 
 Bugfix release.
