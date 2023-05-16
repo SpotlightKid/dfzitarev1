@@ -30,6 +30,7 @@
 #define DISTRHO_PLUGIN_BRAND "chrisarndt.de"
 #define DISTRHO_PLUGIN_NAME  "DFZitaRev1"
 #define DISTRHO_PLUGIN_URI   "https://chrisarndt.de/plugins/dfzitarev1"
+#define DISTRHO_PLUGIN_CLAP_ID "de.chrisarndt.dfzitarev1"
 
 #define DISTRHO_PLUGIN_HAS_UI        0
 #define DISTRHO_UI_USE_NANOVG        0
@@ -44,5 +45,7 @@
 
 // See http://lv2plug.in/ns/lv2core#ref-classes
 #define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
+#define DISTRHO_PLUGIN_VST3_CATEGORIES "Fx|Reverb|Stereo"
+#define DISTRHO_PLUGIN_CLAP_FEATURES "audio-effect", "reverb", "stereo"
 
 #endif // DISTRHO_PLUGIN_INFO_H

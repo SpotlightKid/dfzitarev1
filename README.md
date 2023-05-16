@@ -9,6 +9,7 @@ library demo.
 
 This plugin is available in the following plug-in formats by default:
 
+* CLAP (`de.chrisarndt.dfzitarev1`)
 * LV2 (`https://chrisarndt.de/plugins/dfzitarev1`)
 * VST3 (`dfzitarev1.vst3`)
 
@@ -59,6 +60,7 @@ actually installing them.
 You can also set the installation directory for each plugin format with a
 dedicated makefile variable.
 
+* CLAP: `CLAP_DIR` (`<prefix>/lib/clap`)
 * LADSPA: `LADSPA_DIR` (`<prefix>/lib/ladspa`)
 * LV2: `LV2_DIR` (`<prefix>/lib/lv2`)
 * VST2: `VST_DIR` (`<prefix>/lib/vst`)
@@ -72,6 +74,7 @@ To install the plugins only for your current user account, run
 Again, you can also set the installation directory for each plugin format with
 a dedicated makefile variable.
 
+* CLAP: `USER_CLAP_DIR` (`$HOME/.clap`)
 * LADSPA: `USER_LADSPA_DIR` (`$HOME/.ladspa`)
 * LV2: `USER_LV2_DIR` (`$HOME/.lv2`)
 * VST2: `USER_VST_DIR` (`$HOME/.vst`)
@@ -95,8 +98,8 @@ variables differ depending on the target OS.*
 
 * The [faustpp] pre-processor and [FAUST] (optional)
 
-The [LV2], [LADSPA] and [VST2] (vestige) headers are included in the [DPF]
-framework, which is integrated as a Git sub-module. These need not be
+The [CLAP], [LV2], [LADSPA], [VST]2 (vestige) and VST3 headers are included in
+the [DPF] framework, which is integrated as a Git sub-module. These need not be
 installed separately to build the software in the respective plug-in formats.
 
 `faustpp` and FAUST are only needed to re-generate C++ source and headers files
@@ -127,6 +130,7 @@ with the [cookiecutter-dpf-faust] project template.
 
 [^1]: https://ccrma.stanford.edu/~jos/book2000/Zita_Rev1.html
 
+[CLAP]: https://cleveraudio.org/
 [cookiecutter-dpf-faust]: https://github.com/SpotlightKid/cookiecutter-dpf-faust
 [dm.zita_rev1]: https://faustlibraries.grame.fr/libs/demos/#dmzita_rev1
 [DPF]: https://github.com/DISTRHO/DPF
@@ -135,5 +139,5 @@ with the [cookiecutter-dpf-faust] project template.
 [LADSPA]: http://www.ladspa.org/
 [LV2]: http://lv2plug.in/
 [pkgconf]: https://github.com/pkgconf/pkgconf
-[VST2]: https://en.wikipedia.org/wiki/Virtual_Studio_Technology
+[VST]: https://en.wikipedia.org/wiki/Virtual_Studio_Technology
 [zita-rev1]: https://kokkinizita.linuxaudio.org/linuxaudio/zita-rev1-doc/quickguide.html

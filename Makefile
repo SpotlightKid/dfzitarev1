@@ -4,9 +4,77 @@
 # Created by falkTX, Christopher Arndt, and Patrick Desaulniers
 #
 
-SHELL=/bin/bash
+# error out if DPF is missing, unless the current rule is 'submodules'
+define MISSING_SUBMODULES_ERROR
+=============================================================================
+DPF library not found in directory 'dpf'.
+Please run "make submodules" to clone the missing Git submodules, then retry.
+=============================================================================
+endef
 
--include dpf/Makefile.base.mk
+ifneq ($(MAKECMDGOALS), submodules)
+ifeq (,$(wildcard dpf/Makefile.base.mk))
+    $(info $(MISSING_SUBMODULES_ERROR))
+    $(error Unable to continue)
+else
+    include dpf/Makefile.base.mk
+endif
+endif
+
+# --------------------------------------------------------------
+# Installation directories
+
+PREFIX ?= /usr/local
+BINDIR ?= $(PREFIX)/bin
+LIBDIR ?= $(PREFIX)/lib
+DSSI_DIR ?= $(LIBDIR)/dssi
+LADSPA_DIR ?= $(LIBDIR)/ladspa
+ifneq ($(MACOS_OR_WINDOWS),true)
+LV2_DIR ?= $(LIBDIR)/lv2
+VST2_DIR ?= $(LIBDIR)/vst
+VST3_DIR ?= $(LIBDIR)/vst3
+CLAP_DIR ?= $(LIBDIR)/clap
+endif
+ifeq ($(MACOS),true)
+LV2_DIR ?= /Library/Audio/Plug-Ins/LV2
+VST2_DIR ?= /Library/Audio/Plug-Ins/VST
+VST3_DIR ?= /Library/Audio/Plug-Ins/VST3
+CLAP_DIR ?= /Library/Audio/Plug-Ins/CLAP
+endif
+ifeq ($(WINDOWS),true)
+LV2_DIR ?= $(COMMONPROGRAMFILES)/LV2
+VST2_DIR ?= $(COMMONPROGRAMFILES)/VST2
+VST3_DIR ?= $(COMMONPROGRAMFILES)/VST3
+CLAP_DIR ?= $(COMMONPROGRAMFILES)/CLAP
+endif
+
+USER_DSSI_DIR ?= $(HOME)/.dssi
+USER_LADSPA_DIR ?= $(HOME)/.ladspa
+ifneq ($(MACOS_OR_WINDOWS),true)
+USER_CLAP_DIR ?= $(HOME)/.clap
+USER_LV2_DIR ?= $(HOME)/.lv2
+USER_VST2_DIR ?= $(HOME)/.vst
+USER_VST3_DIR ?= $(HOME)/.vst3
+endif
+ifeq ($(MACOS),true)
+USER_CLAP_DIR ?= $(HOME)/Library/Audio/Plug-Ins/CLAP
+USER_LV2_DIR ?= $(HOME)/Library/Audio/Plug-Ins/LV2
+USER_VST2_DIR ?= $(HOME)/Library/Audio/Plug-Ins/VST
+USER_VST3_DIR ?= $(HOME)/Library/Audio/Plug-Ins/VST3
+endif
+ifeq ($(WINDOWS),true)
+USER_CLAP_DIR ?= $(APPDATA)/CLAP
+USER_LV2_DIR ?= $(APPDATA)/LV2
+USER_VST2_DIR ?= $(APPDATA)/VST
+USER_VST3_DIR ?= $(APPDATA)/VST3
+endif
+
+export DESTDIR PREFIX BINDIR LIBDIR
+export CLAP_DIR DSSI_DIR LADSPA_DIR LV2_DIR VST2_DIR VST3_DIR
+export USER_CLAP_DIR USER_DSSI_DIR USER_LADSPA_DIR USER_LV2_DIR USER_VST2_DIR USER_VST3_DIR
+
+# --------------------------------------------------------------
+# Targets
 
 all: libs plugins gen
 
@@ -56,6 +124,8 @@ endif
 # --------------------------------------------------------------
 
 lv2lint: gen
+	@echo "Please make sure you have the https://github.com/KXStudio/LV2-Extensions bundles"
+	@echo "installed somewhere on your LV2_PATH."
 	@for plug in $(PLUGINS); do \
 		lv2lint -Mpack -q -s lv2_generate_ttl -t "Plugin Author Email" \
 			-I bin/$${plug,,}.lv2/ "$(PLUGIN_BASE_URI)$${plug,,}"; \
