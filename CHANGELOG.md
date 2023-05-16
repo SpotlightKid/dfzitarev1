@@ -5,7 +5,7 @@
 
 Bugfix release.
 
-* fix: VST3 system install path in Makfile (#2)
+* fix: VST3 system install path in Makefile (#2)
 
 
 # 0.1.0 (2022-09-25)
