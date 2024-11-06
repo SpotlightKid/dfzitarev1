@@ -9,15 +9,15 @@ library demo.
 
 This plugin is available in the following plug-in formats by default:
 
-* CLAP (`de.chrisarndt.dfzitarev1`)
-* LV2 (`https://chrisarndt.de/plugins/dfzitarev1`)
-* VST3 (`dfzitarev1.vst3`)
+* [CLAP] (`de.chrisarndt.dfzitarev1`)
+* [LV2] (`https://chrisarndt.de/plugins/dfzitarev1`)
+* [VST3][vst] (`dfzitarev1.vst3`)
 
 The following formats are not built by default, but can be enabled when
 compiling (see ["Compiling"](#compiling)):
 
-* LADSPA (`dfzitarev1-ladspa.so`)
-* VST2 (`dfzitarev1-vst.so`)
+* [LADSPA] (`dfzitarev1-ladspa.so`)
+* [VST2][vst] (`dfzitarev1-vst.so`)
 
 The plugin depends on the host to provide a generic UI to control parameters.
 
@@ -64,7 +64,7 @@ dedicated makefile variable.
 * LADSPA: `LADSPA_DIR` (`<prefix>/lib/ladspa`)
 * LV2: `LV2_DIR` (`<prefix>/lib/lv2`)
 * VST2: `VST_DIR` (`<prefix>/lib/vst`)
-* VST2: `VST_DIR` (`<prefix>/lib/vst3`)
+* VST3: `VST3_DIR` (`<prefix>/lib/vst3`)
 
 Example: `make DESTDIR=/tmp/build-root VST_DIR=/usr/lib/lxvst install`
 
@@ -78,9 +78,9 @@ a dedicated makefile variable.
 * LADSPA: `USER_LADSPA_DIR` (`$HOME/.ladspa`)
 * LV2: `USER_LV2_DIR` (`$HOME/.lv2`)
 * VST2: `USER_VST_DIR` (`$HOME/.vst`)
-* VST3: `USER_VST_DIR` (`$HOME/.vst3`)
+* VST3: `USER_VST3_DIR` (`$HOME/.vst3`)
 
-*Note: The given default values for all of the above listed environment
+*Note: The given default values for all of the above listed makefile
 variables differ depending on the target OS.*
 
 
@@ -90,7 +90,7 @@ variables differ depending on the target OS.*
   (`make`, etc.).
 
   Debian / Ubuntu users should install the `build-essential` package
-  to get these, Arch users the `base-devel` package group.
+  to get these, Arch users the `base-devel` meta package.
 
 * `patch`
 
@@ -98,11 +98,12 @@ variables differ depending on the target OS.*
 
 * The [faustpp] pre-processor and [FAUST] (optional)
 
-The [CLAP], [LV2], [LADSPA], [VST]2 (vestige) and VST3 headers are included in
-the [DPF] framework, which is integrated as a Git sub-module. These need not be
-installed separately to build the software in the respective plug-in formats.
+The [CLAP], [LV2], [LADSPA], [VST2][vst] (Xaymar VST2SDK) and [VST3][vst]
+headers are included in the [DPF] framework, which is integrated as a Git
+sub-module. These need not be installed separately to build the software in
+the respective plug-in formats.
 
-`faustpp` and FAUST are only needed to re-generate C++ source and headers files
+`faustpp` and FAUST are only needed to re-generate C++ source and header files
 if the FAUST DSP source files in the `faust` directory are changed.
 
 
@@ -130,14 +131,14 @@ with the [cookiecutter-dpf-faust] project template.
 
 [^1]: https://ccrma.stanford.edu/~jos/book2000/Zita_Rev1.html
 
-[CLAP]: https://cleveraudio.org/
+[clap]: https://cleveraudio.org/
 [cookiecutter-dpf-faust]: https://github.com/SpotlightKid/cookiecutter-dpf-faust
 [dm.zita_rev1]: https://faustlibraries.grame.fr/libs/demos/#dmzita_rev1
-[DPF]: https://github.com/DISTRHO/DPF
-[FAUST]: https://faust.grame.fr/
+[dpf]: https://github.com/DISTRHO/DPF
+[faust]: https://faust.grame.fr/
 [faustpp]: https://github.com/jpcima/faustpp.git
-[LADSPA]: http://www.ladspa.org/
-[LV2]: http://lv2plug.in/
+[ladspa]: https://www.ladspa.org/
+[lv2]: http://lv2plug.in/
 [pkgconf]: https://github.com/pkgconf/pkgconf
-[VST]: https://en.wikipedia.org/wiki/Virtual_Studio_Technology
+[vst]: https://en.wikipedia.org/wiki/Virtual_Studio_Technology
 [zita-rev1]: https://kokkinizita.linuxaudio.org/linuxaudio/zita-rev1-doc/quickguide.html
