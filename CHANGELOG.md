@@ -1,5 +1,13 @@
 # Changelog
 
+# 0.2.4 (2024-11-23)
+
+* ci: added GitHub actions CI jobs to build binaries for all supported
+  architectures and operating systems.
+* docs: made minor readme additions and improvements.
+* refactor: updated DPF patches to apply cleanly.
+* feat: updated DPF submodule to latest commit c776dab9.
+
 
 # 0.2.2 (2024-11-06)
 
