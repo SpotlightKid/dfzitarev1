@@ -3,7 +3,11 @@
 A feedback-delay-network reverb plugin built with [DPF] and based on a [FAUST]
 library demo.
 
-<p align="center"><img title="Generic LV2 UI in Ardour 6" src="screenshot-ardour6.png" width="300"></center>
+<p align="center"><img title="Generic LV2 UI in Ardour 6"
+  src="screenshot-ardour6.png" width="300"></center>
+
+For a description of the parameters, please refer to the documentation of the
+original [zita-rev1] software.
 
 ## Formats
 
@@ -96,7 +100,7 @@ variables differ depending on the target OS.*
 
 * [pkgconf]
 
-* The [faustpp] pre-processor and [FAUST] (optional)
+* The [faustpp] post-processor and [FAUST] (optional)
 
 The [CLAP], [LV2], [LADSPA], [VST2][vst] (Xaymar VST2SDK) and [VST3][vst]
 headers are included in the [DPF] framework, which is integrated as a Git
@@ -121,7 +125,7 @@ This plugin is released under the *MIT License*. Please see the
 ## Acknowledgements
 
 The DSP code is generated from the FAUST sources via the [faustpp]
-pre-processor and uses the [dm.zita_rev1] demo from the FAUST library, written
+post-processor and uses the [dm.zita_rev1] demo from the FAUST library, written
 by Julius O. Smith III [^1], which is a re-implementation of [zita-rev1] by Fons
 Adriaensen, writen in C++.
 
@@ -136,7 +140,7 @@ with the [cookiecutter-dpf-faust] project template.
 [dm.zita_rev1]: https://faustlibraries.grame.fr/libs/demos/#dmzita_rev1
 [dpf]: https://github.com/DISTRHO/DPF
 [faust]: https://faust.grame.fr/
-[faustpp]: https://github.com/jpcima/faustpp.git
+[faustpp]: https://github.com/jpcima/faustpp
 [ladspa]: https://www.ladspa.org/
 [lv2]: http://lv2plug.in/
 [pkgconf]: https://github.com/pkgconf/pkgconf
