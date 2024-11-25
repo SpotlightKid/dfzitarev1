@@ -3,8 +3,8 @@
 A feedback-delay-network reverb plugin built with [DPF] and based on a [FAUST]
 library demo.
 
-<p align="center"><img title="Generic LV2 UI in Ardour 6"
-  src="screenshot-ardour6.png" width="300"></center>
+<p align="center"><img title="Generic LV2 UI in Carla"
+  src="screenshot-carla.png" width="541"></center>
 
 For a description of the parameters, please refer to the documentation of the
 original [zita-rev1] software.
