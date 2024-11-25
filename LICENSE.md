@@ -32,10 +32,10 @@ The dm.zita_rev1 FAUST library demo function is released under the STK-3.4
 license. Copyright 2003-2019 by Julius O. Smith III.
 
 
-## faustpp
+## faustdoctor
 
-faustpp is released under the Boost Software License 1.0. Copyright 2022 Jean
-Pierre Cimalando
+faustdoctor is released under the Boost Software License 1.0. Copyright 2022
+Jean Pierre Cimalando, 2024 Christopher Arndt.
 
 
 ## For the LADSPA format

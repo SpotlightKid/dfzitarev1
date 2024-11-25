@@ -100,15 +100,15 @@ variables differ depending on the target OS.*
 
 * [pkgconf]
 
-* The [faustpp] post-processor and [FAUST] (optional)
+* The [faustdoctor] post-processor and [FAUST] (optional)
 
 The [CLAP], [LV2], [LADSPA], [VST2][vst] (Xaymar VST2SDK) and [VST3][vst]
 headers are included in the [DPF] framework, which is integrated as a Git
 sub-module. These need not be installed separately to build the software in
 the respective plug-in formats.
 
-`faustpp` and FAUST are only needed to re-generate C++ source and header files
-if the FAUST DSP source files in the `faust` directory are changed.
+`faustdoctor` and FAUST are only needed to re-generate C++ source and header
+files if the FAUST DSP source files in the `faust` directory are changed.
 
 
 ## Author
@@ -124,23 +124,23 @@ This plugin is released under the *MIT License*. Please see the
 
 ## Acknowledgements
 
-The DSP code is generated from the FAUST sources via the [faustpp]
+The DSP code is generated from the FAUST sources via the [faustdoctor]
 post-processor and uses the [dm.zita_rev1] demo from the FAUST library, written
 by Julius O. Smith III [^1], which is a re-implementation of [zita-rev1] by Fons
 Adriaensen, writen in C++.
 
 The project is built using the DISTRHO Plugin Framework ([DPF]) and set up
-with the [cookiecutter-dpf-faust] project template.
+with the [dpf-faust-project-template].
 
 
 [^1]: https://ccrma.stanford.edu/~jos/book2000/Zita_Rev1.html
 
 [clap]: https://cleveraudio.org/
-[cookiecutter-dpf-faust]: https://github.com/SpotlightKid/cookiecutter-dpf-faust
+[dpf-faust-project-template]: https://github.com/SpotlightKid/dpf-faust-project-template
 [dm.zita_rev1]: https://faustlibraries.grame.fr/libs/demos/#dmzita_rev1
 [dpf]: https://github.com/DISTRHO/DPF
 [faust]: https://faust.grame.fr/
-[faustpp]: https://github.com/jpcima/faustpp
+[faustdoctor]: https://github.com/SpotlightKid/faustdoctor
 [ladspa]: https://www.ladspa.org/
 [lv2]: http://lv2plug.in/
 [pkgconf]: https://github.com/pkgconf/pkgconf
