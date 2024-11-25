@@ -58,7 +58,13 @@ void PluginDFZitaRev1::initParameter(uint32_t index, Parameter& parameter) {
     parameter.name = dsp->parameter_label(index);
     parameter.shortName = dsp->parameter_short_label(index);
     parameter.symbol = dsp->parameter_symbol(index);
-    parameter.description = dsp->parameter_description(index);
+    if (index == DFZitaRev1::p_dry_wet_mix) {
+        // XXX: workaround for wrong tooltip in FAUST library demo code
+        parameter.description = "Ratio of dry and wet signal. -1 = fully wet, +1 = fully dry";
+    }
+    else {
+        parameter.description = dsp->parameter_description(index);
+    }
     parameter.unit = dsp->parameter_unit(index);
     parameter.ranges.min = range->min;
     parameter.ranges.max = range->max;
