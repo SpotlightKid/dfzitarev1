@@ -1,5 +1,13 @@
 # Changelog
 
+
+# 0.2.6 (2024-11-25)
+
+* Added parameter groups.
+* Added parameter descriptions (LV2).
+* Generated C++ source from FAUST code with faustdoctor instead of faustpp.
+
+
 # 0.2.4 (2024-11-23)
 
 * ci: added GitHub actions CI jobs to build binaries for all supported
